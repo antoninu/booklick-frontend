@@ -15,7 +15,7 @@ function Content() {
 
       {isLoading && <p>Cargando el contenido...</p>}
 
-      {!isLoading && response && (
+      {/* {!isLoading && response && (
         <>
           <pre>
             {JSON.stringify(
@@ -25,11 +25,176 @@ function Content() {
             )}
           </pre>
         </>
+      )} */}
+      {!isLoading && response && (
+        <>
+          <table style={{ borderCollapse: "collapse", width: "100%" }}>
+            <thead style={{ borderBottom: "3px solid #eceeef" }}>
+              <tr>
+                <th
+                  style={{
+                    border: "1px solid #eceeef",
+                    padding: "7px 2px",
+                    textAlign: "left",
+                  }}
+                >
+                  Titulo
+                </th>
+                <th
+                  style={{
+                    border: "1px solid #eceeef",
+                    padding: "7px 2px",
+                    textAlign: "left",
+                  }}
+                >
+                  Categoria
+                </th>
+                <th
+                  style={{
+                    border: "1px solid #eceeef",
+                    padding: "7px 2px",
+                    textAlign: "left",
+                  }}
+                >
+                  Autores
+                </th>
+                <th
+                  style={{
+                    border: "1px solid #eceeef",
+                    padding: "7px 2px",
+                    textAlign: "left",
+                  }}
+                >
+                  Palabras clave
+                </th>
+                <th
+                  style={{
+                    border: "1px solid #eceeef",
+                    padding: "7px 2px",
+                    textAlign: "left",
+                  }}
+                >
+                  Score
+                </th>
+                <th
+                  style={{
+                    border: "1px solid #eceeef",
+                    padding: "7px 2px",
+                    textAlign: "left",
+                  }}
+                >
+                  Año publicación
+                </th>
+                <th
+                  style={{
+                    border: "1px solid #eceeef",
+                    padding: "7px 2px",
+                    textAlign: "left",
+                  }}
+                >
+                  Link
+                </th>
+                <th
+                  style={{
+                    border: "1px solid #eceeef",
+                    padding: "7px 2px",
+                    textAlign: "left",
+                  }}
+                >
+                  Fecha
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {response.map((document) => (
+                <>
+                  <tr>
+                    <td
+                      style={{
+                        border: "1px solid #eceeef",
+                        padding: "7px 2px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {document.title}
+                    </td>
+                    <td
+                      style={{
+                        border: "1px solid #eceeef",
+                        padding: "7px 2px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {document.category}
+                    </td>
+                    <td
+                      style={{
+                        border: "1px solid #eceeef",
+                        padding: "7px 2px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {document.authors}
+                    </td>
+                    <td
+                      style={{
+                        border: "1px solid #eceeef",
+                        padding: "7px 2px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {document.keyWords}
+                    </td>
+                    <td
+                      style={{
+                        border: "1px solid #eceeef",
+                        padding: "7px 2px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {document.score}
+                    </td>
+                    <td
+                      style={{
+                        border: "1px solid #eceeef",
+                        padding: "7px 2px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {document.publishedYear}
+                    </td>
+
+                    <td
+                      style={{
+                        border: "1px solid #eceeef",
+                        padding: "7px 2px",
+                        textAlign: "left",
+                      }}
+                    >
+                      <a href={document.upload} target="_blank">
+                        VER DOCUMENTO
+                      </a>
+                    </td>
+                    <td
+                      style={{
+                        border: "1px solid #eceeef",
+                        padding: "7px 2px",
+                        textAlign: "left",
+                      }}
+                    >
+                      {document.uploaded_at}
+                    </td>
+                  </tr>
+                </>
+              ))}
+            </tbody>
+          </table>
+        </>
       )}
 
       {!isLoading && error && (
         <>
-          <p>Error loading content</p>
+          <p>Error loading content: INTEGRITY ERROR</p>
           <pre style={{ color: "red" }}>{JSON.stringify(error, null, 2)}</pre>
         </>
       )}

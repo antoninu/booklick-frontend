@@ -20,22 +20,25 @@ export default async function content(req, res) {
     var crypto = require("crypto");
     //const utf8 = require("utf8");
 
-    var secret = "PYPd1Hv4J6";
+    var secret = "PYPd1Hv4J6A";
     //var message = "1515928475.417";
 
     var hmac = crypto.createHmac("sha512", secret);
+
+    var jsonContent = JSON.stringify(content);
+    console.log(jsonContent);
+
     var hmac_result = hmac
-      .update(JSON.stringify(content))
+      .update(jsonContent)
       //.update(message)
       .digest("base64");
 
     let api_signature = response.headers.get("signature");
+    console.log("hmac result: " + hmac_result);
+    console.log("api signature: " + api_signature);
     if (hmac_result !== api_signature) {
-      throw "Integrity not guaranteed!";
+      throw "Integrity error!";
     }
-
-    console.log(hmac_result);
-    console.log(response.headers.get("signature"));
 
     res.status(200).json(content);
   } catch (error) {
