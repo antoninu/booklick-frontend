@@ -7,9 +7,8 @@ export default async function content(req, res) {
   try {
     const tokenCache = auth0.tokenCache(req, res);
     const { accessToken } = await tokenCache.getAccessToken({});
-
+    console.log(accessToken)
     const url = config.API_BASE_URL;
-    console.log(url);
     const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${accessToken}`,

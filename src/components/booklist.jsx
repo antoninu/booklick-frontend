@@ -8,9 +8,9 @@ const API_URL2 = `https://od6ufz9hbg.execute-api.us-east-2.amazonaws.com/booklis
 import Button from '@material-ui/core/Button';
 import Modal from "./Modal"
 async function fetcher(url) {
-  console.log(url)
+
     const res = await fetch(url);
-    console.log(res)
+ 
     const json = await res.json();
     return json;
   }
@@ -34,7 +34,7 @@ const Booklist = ({owner})=>{
     const nameChange = (name)=>{
         setName(name)
     }
-    console.log(data)
+  console.log(data)
     return (
         <>
         <Button onClick={()=>setOpen(true)}style={{fontSize: "3rem"}}size="large" color="#333">

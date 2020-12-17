@@ -18,8 +18,18 @@ const useStyles = makeStyles({
 
 export default function Booklistcard({ name = "mmgv", owner = "mateo",content }) {
   const classes = useStyles();
- 
+  const content2 = localStorage.getItem("content")
 
+  
+  const filteredContent = () => {
+    return JSON.parse(content2).filter(book =>{
+     if(content.includes(book.id.toString())){
+       return true
+     }
+     return false
+    })
+  }
+  console.log(filteredContent())
   return (
     <Card >
       <CardContent>
@@ -30,10 +40,10 @@ export default function Booklistcard({ name = "mmgv", owner = "mateo",content })
           {owner}
         </Typography>
         <Typography variant="body2" component="p">
-          Contenido:
+          <b>Contenido:</b>
         </Typography>
-        {content?.map((book,i)=> {return <>
-        <Button href="">{book}</Button></>})}
+        {filteredContent().map(({title,upload},i)=> {return <>
+        <Button key={i} href={upload} >{title}</Button></>})}
       </CardContent>
         
     </Card>

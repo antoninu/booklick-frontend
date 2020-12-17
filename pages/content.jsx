@@ -8,7 +8,11 @@ import withAuth from "../components/with-auth";
 function Content() {
   const { user, loading } = useFetchUser();
   const { response, error, isLoading } = useApi("api/content");
-
+  if(response)
+  {
+    console.log(response)
+    localStorage.setItem("content", JSON.stringify(response))
+  }
   return (
     <Layout user={user} loading={loading}>
       <h1>Contenido de BookLick</h1>
