@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Booklistcard({ name = "mmgv", owner = "mateo",content }) {
+export default function Insitutioncard({ name , address ,members }) {
   const classes = useStyles();
  
 
@@ -27,13 +27,12 @@ export default function Booklistcard({ name = "mmgv", owner = "mateo",content })
           {name}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          {owner}
+          {address}
         </Typography>
         <Typography variant="body2" component="p">
-          Contenido:
+          Miembros:
         </Typography>
-        {content?.map((book,i)=> {return <>
-        <Button href="">{book}</Button></>})}
+        {members}
       </CardContent>
         
     </Card>
