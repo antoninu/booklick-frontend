@@ -20,6 +20,11 @@ const Header = () => {
               <a>About</a>
             </Link>
           </li>
+          <li>
+            <Link href="/Booklist">
+              <a>BookList</a>
+            </Link>
+          </li>
           {/* <li>
             <Link href="/protected-page">
               <a>Protected Page</a>
@@ -28,6 +33,9 @@ const Header = () => {
           {!loading &&
             (user ? (
               <>
+              <li>
+                  <a href="/institucion">institucion</a>
+                </li>{" "}
                 <li>
                   <a href="/content">Contenido</a>
                 </li>{" "}

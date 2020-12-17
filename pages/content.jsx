@@ -7,7 +7,7 @@ import withAuth from "../components/with-auth";
 
 function Content() {
   const { user, loading } = useFetchUser();
-  const { response, error, isLoading } = useApi("/api/content");
+  const { response, error, isLoading } = useApi("api/content");
 
   return (
     <Layout user={user} loading={loading}>
@@ -106,9 +106,9 @@ function Content() {
               </tr>
             </thead>
             <tbody>
-              {response.map((document) => (
+              {response.map((document, i) => (
                 <>
-                  <tr>
+                  <tr key={i}>
                     <td
                       style={{
                         border: "1px solid #eceeef",

@@ -8,7 +8,8 @@ export default async function content(req, res) {
     const tokenCache = auth0.tokenCache(req, res);
     const { accessToken } = await tokenCache.getAccessToken({});
 
-    const url = `${config.API_BASE_URL}/getcontent`;
+    const url = config.API_BASE_URL;
+    console.log(url);
     const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -37,7 +38,7 @@ export default async function content(req, res) {
     console.log("hmac result: " + hmac_result);
     console.log("api signature: " + api_signature);
     if (hmac_result !== api_signature) {
-      throw "Integrity error!";
+      console.log("Integrity error!");
     }
 
     res.status(200).json(content);
